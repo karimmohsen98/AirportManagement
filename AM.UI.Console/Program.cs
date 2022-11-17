@@ -22,8 +22,8 @@ using System.Security.Cryptography;
 //Flight f1 = new Flight();
 //s1.Passengertype();
 //p2.Passengertype();
-ServiceFlight Sf = new ServiceFlight();
-Sf.Flights= TestData.listFlights;
+//ServiceFlight Sf = new ServiceFlight();
+//Sf.Flights= TestData.listFlights;
 //Sf.GetFlightsDate("Madrid");
 //Sf.GetFlightsDate("Paris");
 //Sf.GetFlightsDateOld("Madrid");
@@ -42,15 +42,103 @@ Sf.Flights= TestData.listFlights;
 //context.SaveChanges();
 //Console.WriteLine(context.Flights.First());
 
-AMContext DB = new AMContext();
 
-ServicePlane sp = new ServicePlane(new UnitOfWork(DB,typeof(GenericRepository<>)));
-sp.Add(TestData.BoingPlane);
-DB.SaveChanges();
+
+//ServicePlane sp = new ServicePlane(new UnitOfWork(DB,typeof(GenericRepository<>)));
+//sp.Add(TestData.BoingPlane);
+//DB.SaveChanges();
 
 /*GenericRepository<Plane> IGR = new GenericRepository<Plane>(DB);
 sp.Add(TestData.BoingPlane);
 IGR.SubmitChanges();*/
+
+void insertData() {
+    AMContext DB = new AMContext();
+    UnitOfWork uw = new UnitOfWork(DB, typeof(GenericRepository<>));
+    ServicePlane sp = new ServicePlane(uw);
+    sp.Add(TestData.Airbusplane);
+    sp.Add(TestData.BoingPlane);
+    sp.Commit();
+
+    //Insert Flight
+    ServiceFlight srvf = new ServiceFlight(uw);
+    TestData.flight2.airLine = "trukishAirline";
+    TestData.flight2.Departure = "Tunis";
+    TestData.flight2.Destination = "Paris";
+    srvf.Add(TestData.flight2);
+
+    TestData.flight3.Departure = "Tunis";
+    TestData.flight3.Destination = "Paris";
+    TestData.flight3.airLine = "trukishAirline";
+    srvf.Add(TestData.flight3);
+
+    TestData.flight4.Departure = "Tunis";
+    TestData.flight4.Destination = "Paris";
+    TestData.flight4.airLine = "AirFrance";
+    srvf.Add(TestData.flight4);
+
+    //Insert Traveller
+    ServicePassenger srvp = new ServicePassenger(uw);
+    TestData.traveller1.PassportNumber = "ZWFF12";
+    TestData.traveller1.Nationality = "Tunisien";
+    TestData.traveller1.TelNumber = 12345678;
+    srvp.Add(TestData.traveller1);
+
+
+    TestData.traveller2.PassportNumber = "ZWFF12";
+    TestData.traveller2.Nationality = "Tunisien";
+    TestData.traveller2.TelNumber = 12345678;
+    srvp.Add(TestData.traveller2);
+
+
+    TestData.traveller3.PassportNumber = "ZWFF12";
+    TestData.traveller3.Nationality = "Tunisien";
+    TestData.traveller3.TelNumber = 12345678;
+    srvp.Add(TestData.traveller3);
+
+    srvp.Commit();
+
+    ///Insert Ticket
+
+    Ticket ticket1 = new Ticket()
+    {
+        Prix = 250,
+        Siege = 15,
+        Vip = false,
+        passenger = TestData.traveller1,
+        flight = TestData.flight2
+
+    };
+    Ticket ticket2 = new Ticket()
+    {
+        Prix = 250,
+        Siege = 14,
+        Vip = false,
+        passenger = TestData.traveller2,
+        flight = TestData.flight2
+
+    };
+
+    Ticket ticket3 = new Ticket()
+    {
+        Prix = 250,
+        Siege = 13,
+        Vip = false,
+        passenger = TestData.traveller3,
+        flight = TestData.flight2
+
+    };
+    ServiceTicket srvt = new ServiceTicket(uw);
+    srvt.Add(ticket1);
+    srvt.Add(ticket2);
+    srvt.Add(ticket3);
+    srvt.Commit();
+
+
+
+
+}
+
 
 
 //p1.CheckProfile("Sam", "Newegg");

@@ -48,6 +48,10 @@ namespace AM.Infrastructure
             .HaveColumnType("datetime2"); //havecolumn to modify all the the types in the database
 
         }
+        public AMContext(DbContextOptions<AMContext> options) : base(options)
+        {
+        }
+
     }
 
 }

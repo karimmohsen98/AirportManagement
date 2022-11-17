@@ -11,13 +11,21 @@ using System.Data.Common;
 using System.Text.RegularExpressions;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using System.Security.Cryptography;
+using AM.ApplicationCore.Services;
+using AM.ApplicationCore.Interfaces;
 
 namespace AM.ApplicationCore.Service
 {
-    public class ServiceFlight : IServiceFlight
+    public class ServiceFlight : Service<Flight>, IServiceFlight     
     {
-        
-        public List<Flight> Flights { get; set; }// = new List<Flight>();
+        private readonly IUnitOfWork _unitOfWork;
+        public ServiceFlight(IUnitOfWork unitOfWork):base(unitOfWork)
+        {
+           this._unitOfWork = unitOfWork;
+            
+        }
+
+        public List<Flight> Flights { get; set; } = new List<Flight>();
         //public List<Flight> Flights = new List<Flight>();
 
 
@@ -201,8 +209,8 @@ namespace AM.ApplicationCore.Service
                     Console.Write("  décollage " + f1.effectiveArrival + "\n");
                 }
 }*/
-public Action<Plane> FlightDetailsDel;
-        public Func<string, double> DurationAverageDel;
+/*public Action<Plane> FlightDetailsDel;
+        public Func<string, double> DurationAverageDel;*/
 
         /*public ServiceFlight() {
             FlightDetailsDel = showFlightDetails;
