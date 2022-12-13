@@ -1,0 +1,48 @@
+﻿@model AM.ApplicationCore.Domain.Ticket
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.flight)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.flight.Departure)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.passenger)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.passenger.EmailAddress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Prix)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Prix)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Siege)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Siege)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Vip)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Vip)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

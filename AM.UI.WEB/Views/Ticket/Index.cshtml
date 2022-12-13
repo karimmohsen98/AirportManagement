@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AM.ApplicationCore.Domain.Ticket>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.flight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.passenger)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Siege)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vip)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.flight.Departure)*@
+                    <a asp-controller="Flight" asp-action="_Details" asp-route-id=@item.flight.FlightId> @item.flight.Departure</a>
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.passenger.EmailAddress)*@
+                    <a asp-controller="Passenger" asp-action="_Details" asp-route-id=@item.passenger.Id> @item.passenger.fullName.FirstName</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Siege)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vip)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

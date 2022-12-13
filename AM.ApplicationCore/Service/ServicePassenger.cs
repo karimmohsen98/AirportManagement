@@ -18,5 +18,20 @@ namespace AM.ApplicationCore.Service
             this._unitOfWork = unitOfWork;
 
         }
+        public void Add(Passenger passenger)
+        {
+            _unitOfWork.Repository<Passenger>().Add(passenger);
+        }
+
+        public IList<Passenger> GetAll()
+        {
+            return _unitOfWork.Repository<Passenger>().GetAll().ToList();
+        }
+
+        public void Remove(Passenger passenger)
+        {
+            _unitOfWork.Repository<Passenger>().Delete(passenger);
+        }
     }
 }
+

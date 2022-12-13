@@ -28,7 +28,7 @@ namespace AM.ApplicationCore.Domain
 
         public override string ToString()
         {
-            return "Destination : " + Destination + "Departure : " +Departure+ "FlightDate : " +FlightDate+ "FlightId" +FlightId+ "EffectiveArrival" +EffectiveArrival+ "EstimatedDuraion"+EstimatedDuration+"PlaneType"+Planess;
+            return "Destination : " + Destination + "Departure : " +Departure+ "FlightDate : " +FlightDate+ "FlightId" +FlightId+ "EffectiveArrival" +EffectiveArrival+ "EstimatedDuraion"+EstimatedDuration+"PlaneType"+Planess + "airLine" + airLine;
         }
     }
 

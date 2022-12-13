@@ -24,8 +24,7 @@ namespace AM.ApplicationCore.Domain
         public string PassportNumber { get; set; }
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
-        [MinLength(3, ErrorMessage = "Min Length Must Be 3")]
-        [MaxLength(25,ErrorMessage = "Max Length Must Be 25")]
+        
         public FullName fullName { get; set; }
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Invalid Phone Number!")]
         public int TelNumber { get; set; }

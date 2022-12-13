@@ -31,7 +31,14 @@ namespace AM.ApplicationCore.Service
               return unitOfWork.Repository<Plane>().GetAll().ToList();
           }
 
-          public void Remove(Plane plane)
+        public int GetFlightNbre(Plane plane)
+        {
+            //return plane.Flights.Count(); //1st method
+            return GetById(plane.PlaneId).Flights.Count(); //scnd method
+                       
+        }
+
+        public void Remove(Plane plane)
           {
               unitOfWork.Repository<Plane>().Delete(plane);
           }

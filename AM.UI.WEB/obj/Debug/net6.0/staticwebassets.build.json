@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4h47qraxHULshGk49AOmGcw1ehpNNB1dhNYcLBCPjaA=",
+  "Hash": "QHmrTv/ri9DVXeLjymOMPpTGCihRqGwVdhr4ixmJJOw=",
   "Source": "AM.UI.WEB",
   "BasePath": "_content/AM.UI.WEB",
   "Mode": "Default",
@@ -1069,6 +1069,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Karim\\source\\repos\\AirportManagement\\AM.UI.WEB\\wwwroot\\uploads\\af3bda93b4fbd6ad9e73bab1a10fc9881634120460_full.png",
+      "SourceId": "AM.UI.WEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Karim\\source\\repos\\AirportManagement\\AM.UI.WEB\\wwwroot\\",
+      "BasePath": "_content/AM.UI.WEB",
+      "RelativePath": "uploads/af3bda93b4fbd6ad9e73bab1a10fc9881634120460_full.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\af3bda93b4fbd6ad9e73bab1a10fc9881634120460_full.png"
+    },
+    {
+      "Identity": "C:\\Users\\Karim\\source\\repos\\AirportManagement\\AM.UI.WEB\\wwwroot\\uploads\\Untitled-1.png",
+      "SourceId": "AM.UI.WEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Karim\\source\\repos\\AirportManagement\\AM.UI.WEB\\wwwroot\\",
+      "BasePath": "_content/AM.UI.WEB",
+      "RelativePath": "uploads/Untitled-1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Untitled-1.png"
     }
   ]
 }

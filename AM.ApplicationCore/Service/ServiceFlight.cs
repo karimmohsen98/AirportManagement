@@ -19,13 +19,16 @@ namespace AM.ApplicationCore.Service
     public class ServiceFlight : Service<Flight>, IServiceFlight     
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IServiceFlight serviceFlight;
+         
         public ServiceFlight(IUnitOfWork unitOfWork):base(unitOfWork)
         {
            this._unitOfWork = unitOfWork;
+           
             
         }
 
-        public List<Flight> Flights { get; set; } = new List<Flight>();
+            public List<Flight> Flights { get; set; } = new List<Flight>();
         //public List<Flight> Flights = new List<Flight>();
 
 
@@ -200,17 +203,22 @@ namespace AM.ApplicationCore.Service
         
         
         }
-      /* var GroupByDest = Flights.GroupBy(f1 => f1.destination);
-            foreach (var des in GroupByDest)
-            {
-                Console.Write("destination " + des.Key + "\n");
-                foreach (var f1 in Flights)
-                {
-                    Console.Write("  décollage " + f1.effectiveArrival + "\n");
-                }
+
+        public List<Flight> GetFlightsByDate(string DateDepart)
+        {
+            return GetMany(f => f.FlightDate.Equals(DateDepart)).ToList();     
+        }
+        /* var GroupByDest = Flights.GroupBy(f1 => f1.destination);
+     foreach (var des in GroupByDest)
+     {
+         Console.Write("destination " + des.Key + "\n");
+         foreach (var f1 in Flights)
+         {
+             Console.Write("  décollage " + f1.effectiveArrival + "\n");
+         }
 }*/
-/*public Action<Plane> FlightDetailsDel;
-        public Func<string, double> DurationAverageDel;*/
+        /*public Action<Plane> FlightDetailsDel;
+                public Func<string, double> DurationAverageDel;*/
 
         /*public ServiceFlight() {
             FlightDetailsDel = showFlightDetails;
@@ -219,10 +227,10 @@ namespace AM.ApplicationCore.Service
                  return (from f in Flights where f.Destination.Equals(des) select f.EstimatedDuration).Average();
              };*/
 
-           // DurationAverageDel = DurationAverage;
+        // DurationAverageDel = DurationAverage;
 
-       // } 
-        
+        // } 
+
     }
 
 }
