@@ -31,6 +31,8 @@ namespace AM.Infrastructure
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
             modelBuilder.ApplyConfiguration(new PassengerConfiguration());
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
+            // modelBuilder.Entity<Ticket>().HasKey(t => new { t.NumTicket, t.PassengerFK, t.FlightFK });
+            //modelBuilder.Entity<Passenger>().OwnsOne(e => e.fullName);
 
         }
         //here we represent our entities that will be converted afterwards to tables in our db
@@ -45,8 +47,10 @@ namespace AM.Infrastructure
         {
             configurationBuilder
             .Properties<DateTime>()       //hascolumn is to only modify a specific column in the db
+            .HaveMaxLength(100)
             .HaveColumnType("datetime2"); //havecolumn to modify all the the types in the database
 
+            
         }
         public AMContext(DbContextOptions<AMContext> options) : base(options)
         {

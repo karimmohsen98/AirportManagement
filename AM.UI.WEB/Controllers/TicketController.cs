@@ -31,7 +31,7 @@ namespace AM.UI.WEB.Controllers
         // GET: TicketController/Details/5
         public ActionResult Details(int Passengerid, int FlightId, int nbrTickets)
         {
-            var ticket = _serviceTicket.GetAll().FirstOrDefault(m =>m.PassengerFK == Passengerid && m.FlightFK == FlightId && m.NumTicket == nbrTickets);
+            var ticket = _serviceTicket.GetMany().FirstOrDefault(m => m.PassengerFK == Passengerid && m.FlightFK == FlightId && m.NumTicket == nbrTickets);
             if (ticket == null)
             {
                 return NotFound();
@@ -97,11 +97,11 @@ namespace AM.UI.WEB.Controllers
         {
             try
             {
-                var tickett = _serviceTicket.GetMany(m => m.PassengerFK == ticket.PassengerFK && m.FlightFK == ticket.FlightFK && m.NumTicket == ticket.NumTicket).FirstOrDefault();
+                //var tickett = _serviceTicket.GetMany(m => m.PassengerFK == ticket.PassengerFK && m.FlightFK == ticket.FlightFK && m.NumTicket == ticket.NumTicket).FirstOrDefault();
 
-                tickett.Prix = ticket.Prix;
-                tickett.Siege = ticket.Siege;
-                tickett.Vip = ticket.Vip;
+                //tickett.Prix = ticket.Prix;
+                //tickett.Siege = ticket.Siege;
+                //tickett.Vip = ticket.Vip;
 
 
                 _serviceTicket.Update(ticket);
@@ -122,7 +122,8 @@ namespace AM.UI.WEB.Controllers
                 return NotFound();
             }
 
-            var ticket = _serviceTicket.GetAll().FirstOrDefault(m => m.PassengerFK == Passengerid && m.FlightFK == FlightId && m.NumTicket == nbrTickets);
+            var ticket = _serviceTicket.GetAll()
+                .FirstOrDefault(m => m.PassengerFK == Passengerid && m.FlightFK == FlightId && m.NumTicket == nbrTickets);
             if (ticket == null)
             {
                 return NotFound();
